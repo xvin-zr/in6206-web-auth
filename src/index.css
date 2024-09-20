@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/public/GeistVF.woff2');
+}
+
+:root {
+  font-family: 'Geist', system-ui, sans-serif;
+  @apply min-h-screen w-screen bg-zinc-50 text-zinc-950;
+}
+
+body {
+  @apply mx-auto;
+}
+
+h2 {
+  @apply text-2xl font-semibold;
+}
+
+.main {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form {
+  @apply mt-4;
+}
+
+input {
+  @apply border p-1 shadow;
+}

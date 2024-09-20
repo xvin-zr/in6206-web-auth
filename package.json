@@ -1,0 +1,49 @@
+{
+  "name": "web-auth",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "api": "tsx watch api/index.ts",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jquery": "^3.5.30",
+    "@types/node": "^22.5.5",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "tailwindcss": "^3.4.12",
+    "tsx": "^4.19.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "jquery": "^3.7.1"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.js"
+        ],
+        "options": {
+          "tabWidth": 4
+        }
+      }
+    ],
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
+  }
+}

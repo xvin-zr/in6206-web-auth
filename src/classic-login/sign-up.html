@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/typescript.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/index.css" />
+    <title>Classic Login</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="bg-ts sticky top-0 mb-4 py-4 text-center">
+        <h1 class="text-3xl font-bold text-zinc-50">Classic Login</h1>
+      </header>
+
+      <main class="main">
+        <h2 class="">Sign up</h2>
+
+        <form class="" onsubmit="">
+          <fieldset class="grid grid-cols-1 gap-2">
+            <div class="grid">
+              <label for="name" class="block">Name</label>
+              <input
+                class="block"
+                type="text"
+                id="name"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="grid">
+              <label for="name" class="block">Email</label>
+              <input
+                class="block"
+                type="email"
+                id="name"
+                required
+                autocomplete="username"
+              />
+            </div>
+
+            <div class="grid">
+              <label for="name" class="block">Password</label>
+              <input
+                class="inline-block"
+                type="password"
+                id="name"
+                required
+                autocomplete="new-password"
+              />
+            </div>
+          </fieldset>
+        </form>
+        <p class="mt-4 text-center text-zinc-500">
+          Already have an account? <a href="./index.html">Log in &rarr;</a>
+        </p>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
