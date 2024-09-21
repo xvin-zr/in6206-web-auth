@@ -9,20 +9,21 @@
   </head>
   <body>
     <div id="app">
-      <header class="bg-ts sticky top-0 mb-4 py-4 text-center">
+      <header class="sticky top-0 mb-4 bg-ts py-4 text-center">
         <h1 class="text-3xl font-bold text-zinc-50">Classic Login</h1>
       </header>
 
       <main class="main">
         <h2 class="">Sign up</h2>
 
-        <form class="" onsubmit="">
+        <form class="" id="signup-form">
           <fieldset class="grid grid-cols-1 gap-2">
             <div class="grid">
               <label for="name" class="block">Name</label>
               <input
                 class="block"
                 type="text"
+                name="name"
                 id="name"
                 required
                 autocomplete="name"
@@ -30,33 +31,40 @@
             </div>
 
             <div class="grid">
-              <label for="name" class="block">Email</label>
+              <label for="email" class="block">Email</label>
               <input
                 class="block"
                 type="email"
-                id="name"
+                name="email"
+                id="email"
                 required
                 autocomplete="username"
               />
             </div>
 
             <div class="grid">
-              <label for="name" class="block">Password</label>
+              <label for="password" class="block">Password</label>
               <input
                 class="inline-block"
                 type="password"
-                id="name"
+                name="password"
+                id="password"
                 required
                 autocomplete="new-password"
               />
             </div>
           </fieldset>
+          <div class="mt-4 grid justify-center">
+            <button class="rounded-sm bg-ts px-2 py-1 text-zinc-50">
+              Sign up
+            </button>
+          </div>
         </form>
         <p class="mt-4 text-center text-zinc-500">
           Already have an account? <a href="./index.html">Log in &rarr;</a>
         </p>
       </main>
     </div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/classic-login/signup.ts"></script>
   </body>
 </html>

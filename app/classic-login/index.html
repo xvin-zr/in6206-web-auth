@@ -9,43 +9,50 @@
   </head>
   <body>
     <div id="app">
-      <header class="bg-ts sticky top-0 mb-4 py-4 text-center">
+      <header class="sticky top-0 mb-4 bg-ts py-4 text-center">
         <h1 class="text-3xl font-bold text-zinc-50">Classic Login</h1>
       </header>
 
       <main class="main">
         <h2>Login</h2>
 
-        <form class="" onsubmit="">
+        <form class="" id="login-form">
           <fieldset class="grid grid-cols-1 gap-2">
             <div class="grid">
-              <label for="name" class="block">Email</label>
+              <label for="email" class="block">Email</label>
               <input
                 class="block"
                 type="email"
-                id="name"
+                name="email"
+                id="email"
                 required
                 autocomplete="username"
               />
             </div>
 
             <div class="grid">
-              <label for="name" class="block">Password</label>
+              <label for="password" class="block">Password</label>
               <input
                 class="block"
                 type="password"
-                id="name"
+                name="password"
+                id="password"
                 required
                 autocomplete="current-password"
               />
             </div>
           </fieldset>
+          <div class="mt-4 grid justify-center">
+            <button class="rounded-sm bg-ts px-2 py-1 text-zinc-50">
+              Log in
+            </button>
+          </div>
         </form>
         <p class="mt-4 text-center text-zinc-500">
           Don't have an account? <a href="./sign-up.html">Sign up &rarr;</a>
         </p>
       </main>
     </div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/classic-login/login.ts"></script>
   </body>
 </html>
