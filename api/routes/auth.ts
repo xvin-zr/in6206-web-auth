@@ -37,6 +37,7 @@ authRouter.post('/signup', async function (req, res) {
     const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // TODO: data validation
     const user: NewUser = {
         name,
         email,
@@ -44,6 +45,11 @@ authRouter.post('/signup', async function (req, res) {
     };
     console.log({ user });
     try {
+        const existingUser = await findUser(email);
+        if (existingUser) {
+            return res.status(409).send('User already exists');
+        }
+
         await db.insert(users).values(user);
         res.send(`User ${user.name} created`);
     } catch (err) {
@@ -51,3 +57,8 @@ authRouter.post('/signup', async function (req, res) {
         throw new Error(`Error creating user: ${err}`);
     }
 });
+
+async function findUser(email: string) {
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user;
+}

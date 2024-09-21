@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { API_URL } from '../main';
+import { API_URL } from '../api';
 
 $('#signup-form').on('submit', function (e) {
     e.preventDefault();
@@ -19,6 +19,9 @@ $('#signup-form').on('submit', function (e) {
         success: function (resp: string) {
             alert(resp);
             window.location.href = './index.html';
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
         },
     });
 });

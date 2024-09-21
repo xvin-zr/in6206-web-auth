@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/typescript.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/index.css" />
+    <title>Classic Login</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="sticky top-0 mb-4 bg-ts py-4 text-center">
+        <h1 class="text-3xl font-bold text-zinc-50">Homepage</h1>
+      </header>
+
+      <main class="main grid grid-cols-1 gap-4">
+        <div
+          class="message animate-pulse justify-self-center bg-ts-100 px-16 py-16 text-xl shadow"
+        >
+          Hi, now you are logged in.
+        </div>
+        <button
+          class="logout inline-block w-24 justify-self-center rounded-sm bg-red-600 px-2 py-1 text-zinc-50"
+        >
+          Log out
+        </button>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

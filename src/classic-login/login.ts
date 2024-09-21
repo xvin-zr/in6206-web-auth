@@ -1,5 +1,8 @@
 import $ from 'jquery';
-import { API_URL } from '../main';
+import { API_URL } from '../api';
+import Auth from '../Auth';
+
+Auth.autoLogin();
 
 $('#login-form').on('submit', async function (e) {
     e.preventDefault();
@@ -14,7 +17,14 @@ $('#login-form').on('submit', async function (e) {
         }),
         contentType: 'application/json',
         success: function (resp: { name: string; message: string }) {
+            Auth.postLogin({
+                name: resp.name,
+                email: formData.get('email') as string,
+                password: formData.get('password') as string,
+            });
             alert(resp.message);
+            document.cookie = `name=${resp.name}; path=/; max-age=3600; samesite=strict`;
+            window.location.href = `../main.html`;
         },
         error: function (xhr) {
             $('#password').val('');
