@@ -3,6 +3,9 @@
 //     logout: () => void;
 // }
 
+import { API_URL } from './api';
+import $ from 'jquery';
+
 type User = {
     email: string;
     name: string;
@@ -40,6 +43,28 @@ const Auth = {
             // @ts-ignore
             $('#password').val(credentials!.password);
         }
+    },
+    async loginFromGoogle(data: {
+        clientId: string;
+        client_id: string;
+        credential: string;
+        select_by: string;
+    }) {
+        $.ajax({
+            url: `${API_URL}/auth/google/login`,
+            method: 'POST',
+            data: JSON.stringify({ credential: data }),
+            contentType: 'application/json',
+            success: (resp: {
+                name: string;
+                email: string;
+                message: string;
+            }) => {
+                alert(resp.message);
+                document.cookie = `name=${resp.name}; path=/; max-age=3600; samesite=strict`;
+                window.location.href = `../main.html`;
+            },
+        });
     },
 };
 

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/typescript.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="module">
+      import Auth from '../../src/Auth.ts';
+      export function loginFromGoogle(data) {
+        console.log(data);
+        Auth.loginFromGoogle(data);
+      }
+      globalThis.loginFromGoogle = loginFromGoogle;
+    </script>
+    <title>Classic Login</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="sticky top-0 mb-4 bg-ts py-4 text-center">
+        <h1 class="text-3xl font-bold text-zinc-50">Classic Login</h1>
+      </header>
+
+      <main class="main">
+        <h2>Login</h2>
+
+        <form class="" id="login-form">
+          <fieldset class="grid grid-cols-1 gap-2">
+            <div class="grid">
+              <label for="email" class="block">Email</label>
+              <input
+                class="block"
+                type="email"
+                name="email"
+                id="email"
+                required
+                autocomplete="username"
+              />
+            </div>
+
+            <div class="grid">
+              <label for="password" class="block">Password</label>
+              <input
+                class="block"
+                type="password"
+                name="password"
+                id="password"
+                required
+                autocomplete="current-password"
+              />
+            </div>
+          </fieldset>
+          <div class="mt-4 grid justify-center">
+            <!-- Google Login -->
+            <div
+              id="g_id_onload"
+              data-client_id="1006451960299-hlflb8qb3ikr1hcf9sj6u8atgrab6onu.apps.googleusercontent.com"
+              data-context="signin"
+              data-ux_mode="popup"
+              data-callback="loginFromGoogle"
+              data-auto_prompt="false"
+            ></div>
+
+            <div
+              class="g_id_signin"
+              data-type="standard"
+              data-shape="rectangular"
+              data-theme="outline"
+              data-text="signin_with"
+              data-size="large"
+              data-logo_alignment="left"
+            ></div>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script type="module" src="/src/classic-login/login.ts"></script>
+  </body>
+</html>
