@@ -15,6 +15,9 @@ $('#login-form').on('submit', async function (e) {
             email: formData.get('email'),
             password: formData.get('password'),
         }),
+        xhrFields: {
+            withCredentials: true,
+        },
         contentType: 'application/json',
         success: function (resp: { name: string; message: string }) {
             Auth.postLogin({
@@ -23,7 +26,6 @@ $('#login-form').on('submit', async function (e) {
                 password: formData.get('password') as string,
             });
             alert(resp.message);
-            document.cookie = `name=${resp.name}; path=/; max-age=3600; samesite=strict`;
             window.location.href = `../main.html`;
         },
         error: function (xhr) {

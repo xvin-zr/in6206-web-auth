@@ -23,10 +23,17 @@ authRouter.post('/login', async function login(req, res) {
             return res.status(401).send('Invalid email or password');
         }
 
-        return res.json({
-            name: user.name,
-            message: `User ${user.name} logged in`,
-        });
+        return res
+            .cookie('name', user.name, {
+                maxAge: 3600_000,
+            })
+            .cookie('email', user.email, {
+                maxAge: 3600_000,
+            })
+            .json({
+                name: user.name,
+                message: `User ${user.name} logged in`,
+            });
     } catch (err) {
         res.status(500).send(`Error logging in`);
         throw new Error(`Error logging in: ${err}`);

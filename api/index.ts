@@ -12,7 +12,7 @@ const PORT = 3003;
 const sqlite = new Database('./api/db/db.sqlite');
 export const db = drizzle(sqlite);
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/auth', authGoogleRouter);
