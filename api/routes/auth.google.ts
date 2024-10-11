@@ -9,7 +9,12 @@ authGoogleRouter.post('/google/login', (req, res) => {
         email: jwt.payload.email,
         name: jwt.payload.name,
     };
-    res.json({ ...user, message: 'Login Successfully' });
+    res.cookie('name', user.name, { maxAge: 3600_000 })
+        .cookie('email', user.email, { maxAge: 3600_000 })
+        .json({
+            ...user,
+            message: 'Login Successfully',
+        });
 });
 
 export default authGoogleRouter;

@@ -3,8 +3,15 @@ import { db } from '..';
 import { NewUser, users } from '../db/schema';
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
+import crypto from 'crypto';
 
 export const authRouter = Router();
+
+const sessions = new Map<string, string>();
+
+function generateSessionId() {
+    return crypto.randomBytes(16).toString('hex');
+}
 
 authRouter.post('/login', async function login(req, res) {
     const { email, password } = req.body;
@@ -23,12 +30,17 @@ authRouter.post('/login', async function login(req, res) {
             return res.status(401).send('Invalid email or password');
         }
 
+        const sessionId = generateSessionId();
+        sessions.set(sessionId, user.email);
+
         return res
             .cookie('name', user.name, {
                 maxAge: 3600_000,
             })
-            .cookie('email', user.email, {
+            .cookie('sessionId', sessionId, {
                 maxAge: 3600_000,
+                httpOnly: true,
+                signed: true,
             })
             .json({
                 name: user.name,

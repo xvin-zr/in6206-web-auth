@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 $('.logout').on('click', function () {
     Auth.logout();
-    document.cookie = 'name=; max-age=-1; path=/; samesite=strict';
+    document.cookie = 'name=; sessionId=; max-age=-1; path=/; samesite=strict';
     window.location.href = '../index.html';
 });
 

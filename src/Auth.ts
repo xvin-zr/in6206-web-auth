@@ -55,13 +55,15 @@ const Auth = {
             method: 'POST',
             data: JSON.stringify({ credential: data }),
             contentType: 'application/json',
+            xhrFields: {
+                withCredentials: true,
+            },
             success: (resp: {
                 name: string;
                 email: string;
                 message: string;
             }) => {
                 alert(resp.message);
-                document.cookie = `name=${resp.name}; path=/; max-age=3600; samesite=strict`;
                 window.location.href = `../main.html`;
             },
         });

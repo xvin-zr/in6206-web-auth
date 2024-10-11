@@ -4,6 +4,7 @@ import { authRouter } from './routes/auth';
 import Database from 'better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import authGoogleRouter from './routes/auth.google';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -14,6 +15,8 @@ export const db = drizzle(sqlite);
 
 app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 app.use(express.json());
+app.use(cookieParser('supersecretlol'));
+
 app.use('/auth', authRouter);
 app.use('/auth', authGoogleRouter);
 
